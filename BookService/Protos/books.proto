@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option csharp_namespace = "BookService.Grpc";
+
+package books;
+
+// Ana servis tanımı
+service BookService {
+  // Unary RPC - Tüm kitapları getir
+  rpc GetBooks (GetBooksRequest) returns (BookList);
+  
+  // Server Streaming - Kitapları tek tek stream et
+  rpc StreamBooks (StreamBooksRequest) returns (stream Book);
+  
+  // Client Streaming - Toplu kitap ekleme
+  rpc AddBooksStream (stream Book) returns (AddBooksResponse);
+  
+  // Bidirectional Streaming - Gerçek zamanlı kitap arama
+  rpc SearchBooksStream (stream SearchRequest) returns (stream Book);
+}
+
+message Book {
+  int32 id = 1;
+  string title = 2;
+  string author = 3;
+  int32 year = 4;
+  double price = 5;
+}
+
+message GetBooksRequest {
+  // Boş istek mesajı
+}
+
+message BookList {
+  repeated Book books = 1;
+}
+
+message StreamBooksRequest {
+  int32 delay_ms = 1; // Her kitap arasında gecikme (ms)
+}
+
+message AddBooksResponse {
+  int32 count = 1;
+  string message = 2;
+}
+
+message SearchRequest {
+  string query = 1;
+}

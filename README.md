@@ -133,76 +133,47 @@ await call.RequestStream.CompleteAsync();
 await readTask;
 ```
 
-## 🎯 Performans Karşılaştırması
+## 🎯 Performance Comparison
 
-Benchmark sonuçları tipik olarak şunu gösterir:
+Benchmark results typically show:
 
-| Metrik | REST | gRPC | Kazanç |
-|--------|------|------|--------|
-| **Latency** | ~1.2ms | ~0.45ms | 2.7x daha hızlı |
-| **Memory** | ~48KB | ~24KB | %50 daha az |
-| **Payload** | ~1.3KB | ~500 bytes | %62 daha küçük |
+| Metric | REST | gRPC | Improvement |
+|--------|------|------|------------|
+| **Latency** | ~332μs | ~297μs | 10% faster |
+| **Memory** | ~23KB | ~26KB | 12% more |
+| **Multiple Calls** | 3.2ms | 2.9ms | 11% faster |
 
-## 🛠️ Teknolojiler
+## 🛠️ Technologies
 
 - **.NET 9** - Modern web framework
 - **ASP.NET Core** - REST API
-- **gRPC** - Yüksek performanslı RPC framework
-- **Protocol Buffers** - Veri serializasyon
-- **BenchmarkDotNet** - Performans ölçümü
-- **Swagger/OpenAPI** - REST API dökümantasyonu
+- **gRPC** - High-performance RPC framework
+- **Protocol Buffers** - Data serialization
+- **BenchmarkDotNet** - Performance measurement
+- **Bogus** - Fake data generation
 
-## 📖 Öğrenme Kaynakları
+## 🤝 When to Use REST vs gRPC
 
-- [Microsoft gRPC Dokümantasyonu](https://learn.microsoft.com/en-us/aspnet/core/grpc/)
-- [Protocol Buffers](https://protobuf.dev/)
-- [grpcurl Kullanımı](https://github.com/fullstorydev/grpcurl)
+### Use REST for:
+- ✅ Public APIs
+- ✅ Browser integration
+- ✅ Simple CRUD operations
+- ✅ Caching/CDN support
 
-## 🧪 Test Senaryoları
+### Use gRPC for:
+- ✅ Microservice communication
+- ✅ High-performance requirements
+- ✅ Real-time streaming
+- ✅ Type safety and code generation
+- ✅ Low latency critical applications
 
-1. **Temel Operasyonlar**: REST ve gRPC ile CRUD işlemleri
-2. **Streaming**: Farklı streaming modlarının kullanımı
-3. **Performans**: REST vs gRPC hız ve kaynak kullanımı karşılaştırması
-4. **Gerçek Zamanlı İletişim**: Bidirectional streaming ile canlı arama
+## 📝 Notes
 
-## 🤝 Ne Zaman REST, Ne Zaman gRPC?
-
-### REST Kullanın:
-- ✅ Public API'ler
-- ✅ Tarayıcı entegrasyonu
-- ✅ Basit CRUD işlemleri
-- ✅ Cache/CDN desteği
-
-### gRPC Kullanın:
-- ✅ Mikroservisler arası iletişim
-- ✅ Yüksek performans gereksinimleri
-- ✅ Gerçek zamanlı streaming
-- ✅ Tip güvenliği ve kod generation
-- ✅ Düşük latency kritik
-
-## 📝 Notlar
-
-- Servis hem HTTP/1.1 hem HTTP/2 destekler
-- Development modunda gRPC reflection aktiftir
-- Swagger UI otomatik olarak REST endpoint'leri dokümante eder
-- Benchmark'lar Release modunda çalıştırılmalıdır
-
-## 🎓 Demo Amaçları
-
-Bu proje eğitim amaçlı hazırlanmıştır ve şunları gösterir:
-
-1. REST ve gRPC'nin aynı projede birlikte kullanımı
-2. 4 farklı gRPC streaming modunun implementasyonu
-3. Client-server iletişim örnekleri
-4. Performans karşılaştırma metodolojisi
-5. Production-ready best practices
-
-## 📄 Lisans
-
-Bu proje MIT lisansı altında sunulmaktadır.
+- Service supports both HTTP/1.1 and HTTP/2
+- gRPC reflection is enabled in development
+- Swagger UI automatically documents REST endpoints
+- Run benchmarks in Release mode for accurate results
 
 ---
 
-**Yazar:** [@berkslv](https://x.com/berkslv)
-
-Sorularınız için issue açabilir veya pull request gönderebilirsiniz! 🚀
+**Author:** [@berkslv](https://x.com/berkslv)
